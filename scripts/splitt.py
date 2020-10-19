@@ -26,7 +26,7 @@ def get_dataset(files, limit=None):
     li = []
     
     if (limit):
-        print("hello")
+        print("debug")
 
     for filename in files:
         #while(limit):
@@ -35,7 +35,8 @@ def get_dataset(files, limit=None):
 
     return pd.concat(li, axis=0, ignore_index=True)	
 	
-def splitt(all_files_mod,verhaeltnis):
+def splitt(all_files_mod,verhaeltnis,vh):
+	verhaeltnis = int(verhaeltnis/10)
 	df_training = get_dataset(all_files_mod[:verhaeltnis]) 
 	df_test = get_dataset(all_files_mod[verhaeltnis:]) 
 	return df_training,df_test
