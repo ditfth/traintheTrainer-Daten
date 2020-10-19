@@ -50,7 +50,7 @@ class GasLabel(BaseEstimator, TransformerMixin):
         arr = np.zeros(shape=(X.shape[0],1)) 
         for gas in range(6):
             for concentration in range(3):
-                print('gas'+gas+'concentration'+concentration+'X')
+                print('gas'+str(gas)+'concentration'+str(concentration)+'X')
                 arr[X[:,gas * 3 + concentration] == 1] = gas + 1
         return np.c_[X, arr]
         
