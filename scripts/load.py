@@ -171,7 +171,7 @@ def load(limit=None):
         
         
     
-    all_files_mod = glob.glob(cwd + r"/input/modified_df/*.csv")
+    all_files_mod = sorted(glob.glob(cwd + r"/input/modified_df/*.csv"))
     print(all_files_mod)
     all_files_original = glob.glob(cwd + r"/input/original_df/*.csv")
     
