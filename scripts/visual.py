@@ -164,6 +164,7 @@ def histo2(np_train_prepared):
 	plt.title('Methode 4: Bin = {}'.format('dynamisch'))
 
 	plt.suptitle('Ammoniak', fontsize=28)
+	plt.tight_layout()
 	plt.show()
 	
 def histo1d(np_train_prepared):
