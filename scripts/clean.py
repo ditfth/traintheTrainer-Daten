@@ -16,8 +16,8 @@ target = ['target']
 
 
 class RollingMean(BaseEstimator, TransformerMixin):
-    def __init__(self, test):
-        self._window = test
+    def __init__(self):
+        self._window = 3
         
     def fit(self, X, y=None):
         return self
@@ -60,7 +60,7 @@ def clean(df_training,df_test,num_features):
     num_pipeline = Pipeline([
         ('mean_imputer', SimpleImputer(strategy='median')),
         ('outlier_detection', OutlierDetection(m_std=3)),
-        ('rolling_mean', RollingMean(test=3)),
+        ('rolling_mean', RollingMean()),
         ('scaler', MinMaxScaler(feature_range=(0,1))),
     ])
 
