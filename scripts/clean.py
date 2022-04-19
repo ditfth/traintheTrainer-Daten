@@ -16,15 +16,15 @@ target = ['target']
 
 
 class RollingMean(BaseEstimator, TransformerMixin):
-    def __init__(self, window_size=3):
-        self._window = window_size
+    def __init__(self, test=3):
+        self._window = test
         
     def fit(self, X, y=None):
         return self
     
     def transform(self, X, y=None):
         df_temp = pd.DataFrame(X)
-        return df_temp.rolling(window=self._window, min_periods=1).mean().to_numpy()
+        return df_temp.rolling(test=self._window, min_periods=1).mean().to_numpy()
         
 
 class OutlierDetection(BaseEstimator, TransformerMixin):
