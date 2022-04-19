@@ -16,7 +16,7 @@ target = ['target']
 
 
 class RollingMean(BaseEstimator, TransformerMixin):
-    def __init__(self, test=3):
+    def __init__(self, test):
         self._window = test
         
     def fit(self, X, y=None):
