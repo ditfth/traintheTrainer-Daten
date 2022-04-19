@@ -28,14 +28,14 @@ class RollingMean(BaseEstimator, TransformerMixin):
         
 
 class OutlierDetection(BaseEstimator, TransformerMixin):
-    def __init__(self, std):
-        self._std = std
+    def __init__(self, m_std):
+        self.m_std = m_std
     
     def fit(self, X, y=None):
         return self
     
     def transform(self, X, y=None):
-        mask = np.abs((X - X.mean(0)) / X.std(0)) > 3
+        mask = np.abs((X - X.mean(0)) / X.std(0)) > self.m_std  
         return np.where(mask, np.median(X, axis=0), X)
         
         
