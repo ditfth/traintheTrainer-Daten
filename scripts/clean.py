@@ -60,7 +60,7 @@ def clean(df_training,df_test,num_features):
     num_pipeline = Pipeline([
         ('mean_imputer', SimpleImputer(strategy='median')),
         ('outlier_detection', OutlierDetection(m_std=3)),
-        ('rolling_mean', RollingMean(window_size=3)),
+        ('rolling_mean', RollingMean(test=3)),
         ('scaler', MinMaxScaler(feature_range=(0,1))),
     ])
 
