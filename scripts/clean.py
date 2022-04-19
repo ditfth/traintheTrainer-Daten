@@ -24,7 +24,7 @@ class RollingMean(BaseEstimator, TransformerMixin):
     
     def transform(self, X, y=None):
         df_temp = pd.DataFrame(X)
-        return df_temp.rolling(test=self._window, min_periods=1).mean().to_numpy()
+        return df_temp.rolling(window=self._window, min_periods=1).mean().to_numpy()
         
 
 class OutlierDetection(BaseEstimator, TransformerMixin):
