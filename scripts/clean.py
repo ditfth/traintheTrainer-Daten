@@ -24,7 +24,7 @@ class RollingMean(BaseEstimator, TransformerMixin):
     
     def transform(self, X, y=None):
         df_temp = pd.DataFrame(X)
-        return df_temp.rolling(window=3, min_periods=1).mean().to_numpy()
+        return df_temp.rolling(window=self._window, min_periods=1).mean().to_numpy()
         
 
 class OutlierDetection(BaseEstimator, TransformerMixin):
@@ -60,7 +60,7 @@ def clean(df_training,df_test,num_features):
     num_pipeline = Pipeline([
         ('mean_imputer', SimpleImputer(strategy='median')),
         ('outlier_detection', OutlierDetection(m_std=3)),
-        ('rolling_mean', RollingMean(3)),
+        ('rolling_mean', RollingMean(window_size=3)),
         ('scaler', MinMaxScaler(feature_range=(0,1))),
     ])
 
