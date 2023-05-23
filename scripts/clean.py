@@ -66,7 +66,7 @@ def clean(df_training,df_test,num_features):
 
     target_pipeline = Pipeline([
         ('imputer', SimpleImputer(strategy='most_frequent')),
-        ('one_hot_encoder', OneHotEncoder(sparse=False, categories='auto')),
+        ('one_hot_encoder', OneHotEncoder(sparse_output=False, categories='auto')),
         ('sorter', GasLabel()),
     ])
 
