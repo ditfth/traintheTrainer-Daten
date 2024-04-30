@@ -1,13 +1,11 @@
 import os
 import glob
-cwd = os.getcwd()
 from zipfile import ZipFile
 import requests
 import io
 import numpy as np
 from sklearn.datasets import load_svmlight_file
 from scipy.sparse import csr_matrix
-import pandas as pd
 import random
 random.seed(42)
 #print('test')
