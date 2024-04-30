@@ -115,7 +115,7 @@ def load(limit=None):
         df = pd.DataFrame(full_array, index=None)
 
         # Setze überischtlichen Header
-        df = df.set_axis(header, axis=1, inplace=False)
+        df = df.set_axis(header, axis=1, copy=True)
 
         # Ersetze numerische durch textbasierte Klassenlabels
         for j in range(1,19):
@@ -165,11 +165,7 @@ def load(limit=None):
         res = df_copy + noise
 
         # Speichere verzerrte Daten ab
-        res.to_csv(df_modified_dir + "batch{}.csv".format(i), header=True, index=None)
-        
-        
-        
-        
+        res.to_csv(df_modified_dir + "batch{}.csv".format(i), header=True, index=None)   
     
     all_files_mod = sorted(glob.glob(cwd + r"/input/modified_df/*.csv"))
     #print(all_files_mod)
