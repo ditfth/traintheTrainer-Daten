@@ -95,6 +95,8 @@ def load(limit=None):
            'Toluol low', 'Toluol medium', 'Toluol high']
     df_original_dir = cwd + "/input/original_df/"
 
+    mapping = {i + 1: name for i, name in enumerate(gas)}
+    
     if not os.path.exists(df_original_dir):
         os.makedirs(df_original_dir)
         
@@ -116,9 +118,10 @@ def load(limit=None):
         df = df.set_axis(header, axis=1, copy=True)
 
         # Ersetze numerische durch textbasierte Klassenlabels
-        df['target'] = df['target'].astype(object)
-        for j in range(1,19):
-            df.loc[df['target'] == j, 'target'] = gas[j-1]
+        df['target'] = df['target'].map(mapping)
+        #df['target'] = df['target'].astype(object)
+        #for j in range(1,19):
+            #df.loc[df['target'] == j, 'target'] = gas[j-1]
             #df.target[df.target == j] = gas[j-1]
 
         # Setze dtype 'category' für die Indexspalte
