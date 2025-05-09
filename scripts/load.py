@@ -116,8 +116,10 @@ def load(limit=None):
         df = df.set_axis(header, axis=1, copy=True)
 
         # Ersetze numerische durch textbasierte Klassenlabels
+        df['target'] = df['target'].astype(object)
         for j in range(1,19):
-            df.target[df.target == j] = gas[j-1]
+            df.loc[df['target'] == j, 'target'] = gas[j-1]
+            #df.target[df.target == j] = gas[j-1]
 
         # Setze dtype 'category' für die Indexspalte
         df.target.astype('category')
