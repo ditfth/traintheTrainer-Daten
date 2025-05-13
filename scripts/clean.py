@@ -76,8 +76,7 @@ def clean(df_training,df_test,num_features):
             ('target', target_pipeline, target)],
         remainder='drop')
         
-    full_pipeline.fit(df_training)
-    np_train_prepared = full_pipeline.transform(df_training)
+    np_train_prepared = full_pipeline.fit_transform(df_training)
     np_test_prepared = full_pipeline.transform(df_test)
     print(np_train_prepared[:2])
     print(np.isnan(np.min(np_train_prepared)), np.isnan(np.min(np_test_prepared)))
