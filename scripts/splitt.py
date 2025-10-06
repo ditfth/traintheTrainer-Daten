@@ -4,9 +4,9 @@ import pandas as pd
 
 def show(df_modified):
 	fig = plt.figure(figsize=(23.04,12.96))
-	plt.plot(df_modified[df_modified['target'] == 'Ethanol low'].iloc[:,1], alpha=1, label='Ethanol low')
-	plt.plot(df_modified[df_modified['target'] == 'Ethanol medium'].iloc[:,1], alpha=1, label='Ethanol medium')
-	plt.plot(df_modified[df_modified['target'] == 'Ethanol high'].iloc[:,1], alpha=1, label='Ethanol high')
+	plt.plot(df_modified[df_modified['target'] == 'Ethanol low'].iloc[:,1], marker='o', linestyle='None', alpha=1, label='Ethanol low')
+	plt.plot(df_modified[df_modified['target'] == 'Ethanol medium'].iloc[:,1], marker='o', linestyle='None', alpha=1, label='Ethanol medium')
+	plt.plot(df_modified[df_modified['target'] == 'Ethanol high'].iloc[:,1], marker='o', linestyle='None', alpha=1, label='Ethanol high')
 
 	plt.title('DR (Sensor 1) für Ethanol', fontsize=30)
 	plt.xlabel('Messung')
@@ -40,3 +40,4 @@ def splitt(all_files_mod,verhaeltnis,vh):
 	df_training = get_dataset(all_files_mod[:verhaeltnis]) 
 	df_test = get_dataset(all_files_mod[verhaeltnis:]) 
 	return df_training,df_test
+
